@@ -1,0 +1,23 @@
+## Image UBUNTU
+FROM ubuntu
+
+## System update
+RUN apt-get update
+
+## Set TIMEZONE
+ENV TZ=Europe/Madrid
+
+## We create the /etc/timezone file to configure
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+## Install NGINX
+RUN apt-get install -y nginx
+
+## We create an index.html file in the default nginx directory
+RUN echo 'Ubuntu container example.' > /var/www/html/index.html
+
+## We start NGINX through ENTRYPOINT so that it cannot be modified when creating the container
+ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
+
+## We expose Port 80
+EXPOSE 80
