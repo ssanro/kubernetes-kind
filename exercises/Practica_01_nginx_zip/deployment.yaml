@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: practica3
+  labels:
+    app: practica3
+spec:
+  selector:
+    matchLabels:
+      app: practica3
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: practica3
+    spec:
+      containers:
+        - name: practica3
+          image: practica3
+          ports:
+            - containerPort: 80

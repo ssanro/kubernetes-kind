@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: practica2
+  labels:
+     app: practica2
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30002
+    protocol: TCP
+  selector:
+     app: practica2

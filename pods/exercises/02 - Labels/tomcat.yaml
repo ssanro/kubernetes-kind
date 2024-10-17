@@ -4,6 +4,7 @@ metadata:
   name: tomcat
   labels:
     estado: "desarrollo"
+    demo: p6
 spec:
   containers:
    - name: tomcat

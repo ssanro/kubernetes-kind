@@ -1,0 +1,31 @@
+Desplegar una base de datos MySQL en Kubernetes implica varios pasos, desde la creación de un archivo de configuración YAML hasta la aplicación de este archivo en tu clúster de Kubernetes. Aquí tienes una guía paso a paso:
+
+Este archivo define:
+Un PersistentVolumeClaim para el almacenamiento persistente.
+Un Service para exponer MySQL dentro del clúster.
+Un Deployment para gestionar el contenedor de MySQL.
+Aplica el archivo de configuración en tu clúster de Kubernetes:
+kubectl apply -f mysql-deployment.yaml
+
+Asegúrate de que el archivo mysql-deployment.yaml esté en el directorio desde el cual ejecutas el comando.
+Verifica que los recursos se hayan creado correctamente:
+kubectl get pods
+kubectl get svc
+kubectl get pvc
+
+Estos comandos te mostrarán el estado de los pods, servicios y volúmenes persistentes.
+Accede a MySQL: Puedes acceder a MySQL desde dentro del clúster utilizando el nombre del servicio (mysql). Si necesitas acceder desde fuera del clúster, puedes configurar un servicio de tipo LoadBalancer o NodePort.
+
+
+
+Nos conectamos al pod de MYSQL
+mysql -h mysql -u root -p
+
+CREATE DATABASE mi_base_de_datos;
+USE mi_base_de_datos;
+CREATE TABLE mi_tabla (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    edad INT NOT NULL
+);
+
